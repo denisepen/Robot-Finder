@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-
+// build component as an object
  // export default class Hello extends Component {
  //   render(){
  //     return (
@@ -13,7 +13,7 @@ import React, { Component } from 'react';
  //   }
  // }
 
-// or
+// or as a function
 const Hello = (props) => {
 return (
   <div >
