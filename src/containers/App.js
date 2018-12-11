@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import CardList from './CardList';
-import { robots } from './robots'
-import SearchBox from './SearchBox'
+import CardList from '../components/CardList';
+// import { robots } from './robots'
+import SearchBox from '../components/SearchBox'
+import Scroll from '../components/Scroll'
 
 
  class App extends Component  {
@@ -9,7 +10,7 @@ import SearchBox from './SearchBox'
     constructor(){
       super()
       this.state = {
-        robots: robots,
+        robots: [],
         searchfield: ''
       }
     }
@@ -37,14 +38,21 @@ import SearchBox from './SearchBox'
     })
     // console.log(filteredRobots);
 
-    return (
+    if (this.state.robots.length === 0){
+      return <h1>Loading</h1>
+    } else {
+      return (
 
-      <div className = 'tc' >
-        <h1> Robot Finder </h1>
-        <SearchBox  searchChange = {this.onSearchChange}/>
-        <CardList robots={filteredRobots}/>
-      </div>
-    )
+        <div className = 'tc' >
+          <h1> Robot Finder </h1>
+          <SearchBox  searchChange = {this.onSearchChange}/>
+          <Scroll>
+            <CardList robots={filteredRobots}/>
+          </Scroll>
+        </div>
+      )
+    }
+
   }
 
 }
